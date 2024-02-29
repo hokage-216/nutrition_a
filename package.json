@@ -1,0 +1,20 @@
+{
+  "name": "nutrition_a",
+  "version": "1.0.0",
+  "description": "Web application for monitoring family nutrition.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hokage-216/nutrition_a.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hokage-216/nutrition_a/issues"
+  },
+  "homepage": "https://github.com/hokage-216/nutrition_a#readme"
+}

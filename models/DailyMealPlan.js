@@ -1,5 +1,3 @@
-
-
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -52,7 +50,7 @@ DailyMealPlan.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     underscored: true,
     modelName: 'daily_meal_plan',
     tableName: 'daily_meal_plans',

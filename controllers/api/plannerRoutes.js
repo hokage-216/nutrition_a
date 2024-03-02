@@ -4,9 +4,9 @@ const User = require('./models/User');
 
 router.get('/daily-meals', async (req, res) => {
   try {
-    const userId = req.user.id; 
+    const userId = req.User.id; 
     const exclusions = await User.getExclusions(userId);
-    const diet = await User.getDiet(userId);
+    const diet = User.params.diet;
 
     const dietArray = (diet || '').split(',');
     const exclusionArray = (exclusions || '').split(',');
@@ -33,7 +33,6 @@ router.get('/daily-meals', async (req, res) => {
         exclude: exclusions || undefined,
         diet: diet || undefined,
         targetCalories: targetCalories || undefined,
-        
       }
     });
 

@@ -91,7 +91,7 @@ User.init(
     intolerances: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
-    }
+    },
   },
   {
     hooks: {

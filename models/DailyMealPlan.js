@@ -50,7 +50,7 @@ DailyMealPlan.init(
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     underscored: true,
     modelName: 'daily_meal_plan',
     tableName: 'daily_meal_plans',

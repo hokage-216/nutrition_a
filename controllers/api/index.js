@@ -1,8 +1,7 @@
-const router = require('express').Router();
-const userRoutes = require('./userRoutes');
-const plannerRoutes = requrie('./plannerRoutes');
+const express = require('express');
+const router = express.Router();
+const plannerRoutes = require('./plannerRoutes');
 
-router.use('/users', userRoutes);
-router.use('./recipe', plannerRoutes);
+router.use('/api/planner', plannerRoutes);
 
 module.exports = router;

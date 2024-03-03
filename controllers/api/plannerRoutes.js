@@ -1,12 +1,18 @@
-const axios = require('axios');
-const { Meal } = require('./models'); 
-const User = require('./models/User'); 
 
-router.get('/daily-meals', async (req, res) => {
+const express = require('express');
+const router = express.Router();
+const axios = require('axios');
+const { DailyMealPlan, Meal } = require('../../models'); 
+const User = require('../../models/User');
+const Meal = require('../../models/meal');
+
+
+
+router.get('/DailyMealPlan', async (req, res) => {
   try {
-    const userId = req.User.id; 
+    const userId = req.user.id; 
     const exclusions = await User.getExclusions(userId);
-    const diet = User.params.diet;
+    const diet = await User.getDiet(userId);
 
     const dietArray = (diet || '').split(',');
     const exclusionArray = (exclusions || '').split(',');
@@ -33,6 +39,7 @@ router.get('/daily-meals', async (req, res) => {
         exclude: exclusions || undefined,
         diet: diet || undefined,
         targetCalories: targetCalories || undefined,
+        
       }
     });
 

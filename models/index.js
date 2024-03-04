@@ -1,4 +1,6 @@
+const Meal = require('./meal');
 
+const DailyMealPlan = require('./DailyMealPlan');
 
 Meal.hasMany(DailyMealPlan, {
   foreignKey: 'breakfastId',
@@ -14,3 +16,6 @@ Meal.hasMany(DailyMealPlan, {
   foreignKey: 'dinnerId',
   onDelete: 'SET NULL', // Set the dinnerId to NULL if the associated meal is deleted
 });
+
+
+module.exports = { Meal, DailyMealPlan };

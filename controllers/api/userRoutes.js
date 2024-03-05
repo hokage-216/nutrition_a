@@ -47,4 +47,8 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Add route for creating new user
+
+// Add route for deleting user
+
 module.exports = router;

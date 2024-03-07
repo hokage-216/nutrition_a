@@ -60,19 +60,7 @@ User.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    body_fat: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     activity_level: {
-        type: DataTypes.STRING,
-        allowNull:false,
-    },
-    target_calories: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    diet_pref: {
         type: DataTypes.STRING,
         allowNull:false,
     },
@@ -84,24 +72,16 @@ User.init(
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
     },
-    exclude_cuisines: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
-    },
-    intolerances: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
-    },
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
+      beforeCreate: async (newUser) => {
+            newUser.password = await bcrypt.hash(newUser.password, 10);
+            return newUser;
       },
-      beforeUpdate: async (updatedUserData) => {
-            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            return updatedUserData;
+      beforeUpdate: async (updatedUser) => {
+            updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
+            return updatedUser;
       },
     },
     sequelize,

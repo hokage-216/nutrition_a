@@ -2,17 +2,22 @@
 
 <button id="generateMealsBtn">Generate Daily Meals</button>
 
+<h2>{{dailyMeal.breakfast.title}}</h2>
+<img src="{{ recipeInfo.[0].image }}">
+<P>{{dailyMeal.breakfast.readyInMinutes}}</P>
+<p>Servings: {{dailyMeal.breakfast.servings}}</p>
 
-<script>
-  document.getElementById('generateMealsBtn').addEventListener('click', async () => {
-    try {
-      const response = await axios.get('/daily-meals');
-      console.log(response.data); 
-      alert('Daily meals generated successfully!');
-    } catch (error) {
-      console.error('Error generating daily meals:', error.message);
-      alert('Failed to generate daily meals. Please try again later.');
-    }
-  });
-</script>
+<h2>{{dailyMeal.lunch.title}}</h2>
+<img src="{{ recipeInfo.[1].image }}">
+<p>{{dailyMeal.lunch.readyInMinutes}}</p>
+<p>{{dailyMeal.lunch.servings}}</p>
+
+<h2>{{dailyMeal.dinner.title}}</h2>
+<img src="{{ recipeInfo.[2].image }}">
+<p>{{dailyMeal.dinner.readyInMinutes}}</p>
+<p>{{dailyMeal.dinner.servings}}</p>
+
+
+
+<script src="../public/js/planner.js"></script>
 

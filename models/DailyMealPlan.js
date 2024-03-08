@@ -7,53 +7,48 @@ DailyMealPlan.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
+      autoIncrement: true
     },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'User', 
-        key: 'id',
-      },
+        model: 'user',
+        key: 'id'
+      }
     },
     breakfastId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Meal',
-        key: 'id',
-      },
+        model: 'meal',
+        key: 'id'
+      }
     },
     lunchId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Meal',
-        key: 'id',
-      },
+        model: 'meal',
+        key: 'id'
+      }
     },
     dinnerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Meal',
-        key: 'id',
-      },
+        model: 'meal',
+        key: 'id'
+      }
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'daily_meal_plan',
-    tableName: 'daily_meal_plans',
+    modelName: 'daily_meal_plan'
   }
 );
 

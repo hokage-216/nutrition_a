@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('./models');
+const { User } = require('../../models');
 
 router.put('/updateNutrition', async (req, res) => {
   const { userId, age, weight, /* other fields */} = req.body;

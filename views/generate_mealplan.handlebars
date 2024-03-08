@@ -1,6 +1,8 @@
 
 
-<button id="generateMealsBtn">Generate Daily Meals</button>
+<form id="generateForm" action="/dailymeal" method="GET">
+  <button type="submit" id="generateMealsBtn">Generate Daily Meals</button>
+</form>
 
 <h2>{{dailyMeal.breakfast.title}}</h2>
 <img src="{{ recipeInfo.[0].image }}">

@@ -4,13 +4,6 @@ const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   try {
-    // Get all users
-    const userData = await User.findAll();
-
-    // Serialize data so the template can read it
-    const users = userData.map((project) => project.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
     res.render('dashboard', { 
       users, 
       logged_in: req.session.logged_in 

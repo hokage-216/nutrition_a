@@ -23,6 +23,7 @@ User.init(
         unique: true,
         validate: {
             isEmail: true,
+            notEmpty: true,
         },
     },
     password: {
@@ -66,31 +67,35 @@ User.init(
     },
     target_calories: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
     },
     target_fat: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     target_carbs: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      allowNull: true
     },
     target_proteins: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      allowNull: true
     }
   },
   {
     hooks: {
       beforeCreate: async (newUser) => {
-            newUser.password = await bcrypt.hash(newUser.password, 10);
-            return newUser;
+        newUser.password = await bcrypt.hash(newUser.password, 10);
+        return newUser;
       },
       beforeUpdate: async (updatedUser) => {
-            updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
-            return updatedUser;
+        updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
+        return updatedUser;
       },
+      beforeBulkCreate: async (newUsers) => {
+        
+      },
+      be
     },
     sequelize,
     timestamps: false,

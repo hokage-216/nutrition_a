@@ -64,14 +64,14 @@ User.init(
         type: DataTypes.STRING,
         allowNull:false,
     },
-    favorite_recipes: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: true,
-    },
-    cuisine_pref: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
-    },
+    // favorite_recipes: {
+    //     type: DataTypes.ARRAY(DataTypes.INTEGER),
+    //     allowNull: true,
+    // },
+    // cuisine_pref: {
+    //     type: DataTypes.ARRAY(DataTypes.STRING),
+    //     allowNull: true,
+    // },
   },
   {
     hooks: {

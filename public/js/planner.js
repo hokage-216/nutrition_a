@@ -84,7 +84,7 @@ async function fetchMealPlan() {
 }
 
 
-const saveMealsUrl = '/api/planner/save-meal';
+const saveMealsUrl = '/api/planner/save-meals';
 
 
 document.getElementById('save-button').addEventListener('click', async () => {

@@ -64,14 +64,22 @@ User.init(
         type: DataTypes.STRING,
         allowNull:false,
     },
-    // favorite_recipes: {
-    //     type: DataTypes.ARRAY(DataTypes.INTEGER),
-    //     allowNull: true,
-    // },
-    // cuisine_pref: {
-    //     type: DataTypes.ARRAY(DataTypes.STRING),
-    //     allowNull: true,
-    // },
+    target_calories: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    target_fat: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    target_carbs: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    target_proteins: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    }
   },
   {
     hooks: {

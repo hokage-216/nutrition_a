@@ -23,6 +23,7 @@ User.init(
         unique: true,
         validate: {
             isEmail: true,
+            notEmpty: true,
         },
     },
     password: {
@@ -64,25 +65,37 @@ User.init(
         type: DataTypes.STRING,
         allowNull:false,
     },
-    // favorite_recipes: {
-    //     type: DataTypes.ARRAY(DataTypes.INTEGER),
-    //     allowNull: true,
-    // },
-    // cuisine_pref: {
-    //     type: DataTypes.ARRAY(DataTypes.STRING),
-    //     allowNull: true,
-    // },
+    target_calories: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
+    target_fat: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    target_carbs: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    target_proteins: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    }
   },
   {
     hooks: {
       beforeCreate: async (newUser) => {
-            newUser.password = await bcrypt.hash(newUser.password, 10);
-            return newUser;
+        newUser.password = await bcrypt.hash(newUser.password, 10);
+        return newUser;
       },
       beforeUpdate: async (updatedUser) => {
-            updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
-            return updatedUser;
+        updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
+        return updatedUser;
       },
+      beforeBulkCreate: async (newUsers) => {
+        
+      },
+      be
     },
     sequelize,
     timestamps: false,

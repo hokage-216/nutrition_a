@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 router.put('/updateNutrition', async (req, res) => {
-  const { userId, age, weight, /* other fields */} = req.body;
+  const userId = req.session.userId;
+  const { age, weight, } = req.body;
   try {
     // update user in the database
     await User.update({ age, weight /* other fields */ }, {

@@ -1,20 +1,26 @@
-<div id="daily-meal">
-  <h2>Daily Meal Plan</h2>
-  <div id="breakfast">
-    <h3>Breakfast</h3>
-    <img id="breakfast-image" src="" alt="Breakfast Image">
-  </div>
-  <div id="lunch">
-    <h3>Lunch</h3>
-    <img id="lunch-image" src="" alt="Lunch Image">
-  </div>
-  <div id="dinner">
-    <h3>Dinner</h3>
-    <img id="dinner-image" src="" alt="Dinner Image">
-  </div>
+<div class="container text-center mt-5 bg-dark p-4 rounded">
+    <div id="daily-meal">
+        <h2 class="text-light mb-4">Daily Meal Plan</h2>
+        <div id="breakfast" class="mb-4">
+            <h3 class="text-light">Breakfast</h3>
+            <!-- Images and titles for breakfast meals will be inserted here -->
+        </div>
+        <div id="lunch" class="mb-4">
+            <h3 class="text-light">Lunch</h3>
+            <!-- Images and titles for lunch meals will be inserted here -->
+        </div>
+        <div id="dinner">
+            <h3 class="text-light">Dinner</h3>
+            <!-- Images and titles for dinner meals will be inserted here -->
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button id="generate-button" class="btn btn-primary me-3">Generate Meal Plan</button>
+        <button id="save-button" class="btn btn-success">Save</button>
+    </div>
 </div>
 
-<button id="generate-button">Generate Meal Plan</button>
 
-<script src="../public/js/planner.js"></script>
 
+<script src="/js/planner.js"></script>

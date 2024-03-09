@@ -34,6 +34,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-
+router.get('/generate-mealplan', async (req, res) => {
+  res.render('generate_mealplan');
+});
 
 module.exports = router;

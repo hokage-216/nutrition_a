@@ -1,15 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('nutrition-form');
+  const age = document.getElementById('age').value;
+  const weight = document.getElementById('weight').value; // in pounds
+  const male = document.getElementById('male').value;
+  const height_ft = document.getElementById('height-ft').value;
+  const height_in = document.getElementById('height-in').value;
+  const activity_level = document.getElementById('activity-level').value;
+  const submit = document.getElementById('submit');
 
   function calculateAndUpdateNutritionGoals() {
-    const age = document.getElementById('age').value;
-    const weight = document.getElementById('weight').value; // in pounds
-    const sex = document.getElementById('sex').value;
-    const height_ft = document.getElementById('height-ft').value;
-    const height_in = document.getElementById('height-in').value;
-    const activity_level = document.getElementById('activity-level').value;
-
-    function calculateCalories(age, weight, sex, height_ft, height_in, activity_level) {
+    
+    function calculateCalories(age, weight, male, height_ft, height_in, activity_level) {
       
       const activityMultipliers = {
         sedentary: 1.2,
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const height_cm = (height_ft * 30.48) + (height_in * 2.54); 
 
       let bmr;
-      if (sex === 'male') {
+      if (male) {
           bmr = 88.362 + (13.397 * weight_kg) + (4.799 * height_cm) - (5.677 * age);
       } else {
           bmr = 447.593 + (9.247 * weight_kg) + (3.098 * height_cm) - (4.330 * age);
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Calorie calculation: Calculates average calories burned per day based on activity level
-    const calories = calculateCalories(age, weight, sex, height_ft, height_in, activity_level);
+    const calories = calculateCalories(age, weight, male, height_ft, height_in, activity_level);
     document.getElementById('calories').textContent = calories.toFixed(0);
 
     // Example of calculating macros (simplified)
@@ -77,5 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
           calculateAndUpdateNutritionGoals();
       }
   }, true); // Use capturing to catch the event
+
+
 
 });

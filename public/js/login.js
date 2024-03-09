@@ -1,3 +1,7 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+
 const loginFormHandler = async (event) => {
     // Stop the browser from submitting the form so we can do so with JavaScript
     event.preventDefault();
@@ -6,6 +10,8 @@ const loginFormHandler = async (event) => {
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
+    process.env.USERPASS  = password;
+
     if (email && password) {
       // Send the e-mail and password to the server
       const response = await fetch('/api/users/login', {

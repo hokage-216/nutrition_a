@@ -92,10 +92,7 @@ User.init(
         updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
         return updatedUser;
       },
-      beforeBulkCreate: async (newUsers) => {
-        
-      },
-      be
+
     },
     sequelize,
     timestamps: false,

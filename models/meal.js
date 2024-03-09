@@ -5,26 +5,31 @@ class Meal extends Model {}
 
 Meal.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: {
+   id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+   },
+    title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    sourceUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'meal'
+    modelName: 'meal',
   }
 );
 

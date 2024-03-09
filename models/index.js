@@ -4,13 +4,11 @@ const sequelize = require('../config/connection');
 
 const UserModel = require('./User');
 const MealModel = require('./Meal');
-const DailyMealPlanModel = require('./DailyMealPlan');
-const RecipeModel = require('./Recipe');
+
 
 const User = new UserModel(sequelize, Sequelize);
 const Meal = new  MealModel(sequelize, Sequelize);
-const DailyMealPlan = new DailyMealPlanModel(sequelize, Sequelize);
-const Recipe = new RecipeModel(sequelize, Sequelize);
+
 
 // User.hasMany(DailyMealPlan, {
 //   foreignKey: 'userId', 
@@ -47,6 +45,4 @@ const Recipe = new RecipeModel(sequelize, Sequelize);
 module.exports = {
   User,
   Meal,
-  DailyMealPlan,
-  Recipe,
 };

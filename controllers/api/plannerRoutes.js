@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 const { Meal } = require('../../models');
+
+router.get('/', async (req, res) => {
+  res.render('dashboard', {showPlanner: true});
+});
 
 router.post('/save-meals', async (req, res) => {
   try {

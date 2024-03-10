@@ -5,7 +5,7 @@
       <h2>Dashboard</h2>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Planner</a>
+          <a class="nav-link active" href="/api/planner">Planner</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Discover</a>
@@ -22,6 +22,8 @@
     <!-- Main content -->
     <div class="main-content">
       <h2>Main Content</h2>
-      <p>{{ body }}</p>
+      {{#if showPlanner}}
+        {{>planner}}
+      {{/if}}
     </div>
   </div>

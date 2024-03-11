@@ -2,12 +2,21 @@ const Sequelize = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-const User = require('./User');
-const Meal = require('./Meal');
+const UserModel = require('./User');
+const MealModel = require('./Meal');
+
+
+const User = new UserModel(sequelize, Sequelize);
+const Meal = new  MealModel(sequelize, Sequelize);
 
 
 User.hasMany(Meal, {
-  foreignKey: 'mealId', 
+  foreignKey: 'userId', 
 });
 
-module.exports = { User, Meal };
+
+
+module.exports = {
+  User,
+  Meal,
+};

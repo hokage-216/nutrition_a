@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
   res.render('dashboard', {showPlanner: true});
 });
 
+// create/add meal in/to our db
 router.post('/save-meals', async (req, res) => {
   try {
     const mealPlan = req.body;

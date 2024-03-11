@@ -13,6 +13,10 @@
         <li class="nav-item">
           <a class="nav-link" href="#">User Information</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="/api/search">User Information</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">logout</a>
         </li>
@@ -24,6 +28,10 @@
       <h2>Main Content</h2>
       {{#if showPlanner}}
         {{>planner}}
+      {{/if}}
+
+      {{#if showcontroller}}
+        {{>search}}
       {{/if}}
     </div>
   </div>

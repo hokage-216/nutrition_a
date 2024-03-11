@@ -1,5 +1,5 @@
-import RecipeModel from './recipemodel.js';
-import RecipeView from './recipeviews.js';
+import RecipeModel from '../models/recipemodel.js';
+import RecipeView from '../viewrecipes/public/recipeviews.js';
 
 
 class RecipeController {

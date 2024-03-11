@@ -1,0 +1,29 @@
+
+{{#extend "main"}}
+
+{{#content "main"}}
+    <section>
+        <h2>Recipes</h2>
+        {{#each recipes}}
+            <div class="recipe">
+                <h3>{{this.title}}</h3>
+                <h4>Ingredients:</h4>
+                <ul>
+                    {{#each this.ingredients}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    {{#each this.instructions}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ol>
+            </div>
+        {{else}}
+            <p>No recipes found.</p>
+        {{/each}}
+    </section>
+{{/content}}
+
+{{/extend}}

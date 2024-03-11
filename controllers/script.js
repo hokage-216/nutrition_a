@@ -1,6 +1,6 @@
 import RecipeController from './recipecontroller.js';
 
-const apiKey = '6e6eb5f009de4797a891962aba8e1d54'; // Replace with your actual Spoonacular API key
+const apiKey = '6e6eb5f009de4797a891962aba8e1d54';
 
 const recipeController = new RecipeController(apiKey);
 

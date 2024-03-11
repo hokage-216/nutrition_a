@@ -28,5 +28,4 @@ class RecipeModel {
     }
 }
 
-// Export the RecipeModel class
 export default RecipeModel;

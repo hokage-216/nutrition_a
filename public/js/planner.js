@@ -15,77 +15,72 @@ async function fetchMealPlan() {
   }catch (error){
     console.log('There was a problem with the fetch operation', error);
   }};
- 
 
-  
-  async function getRecipeDetails(recipeId) {
-    const url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log('Fetched recipe details:', data); 
-        return data;
-    } catch (error) {
-        console.error('Error fetching recipe details:', error);
-        return null;
-    }
-}
-
-  
-  document.getElementById('generate-button').addEventListener('click', async()=>{
-    console.log('Button clicked');
-     const  mealPlan = await fetchMealPlan();
-     console.log('Fetched meal plan:', mealPlan);
-    displayMealPlan(mealPlan);
-  })
-  
-  
-    
-    async function displayMealPlan(mealPlan) {
-      console.log('Displaying meal plan:', mealPlan);
-  
-      const breakfastMeal = mealPlan.meals[0];
-      const lunchMeal = mealPlan.meals[1];
-      const dinnerMeal = mealPlan.meals[2];
-  
-      displayMeals([breakfastMeal], 'breakfast');
-      displayMeals([lunchMeal], 'lunch');
-      displayMeals([dinnerMeal], 'dinner');
+async function getRecipeDetails(recipeId) {
+  const url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
+  try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log('Fetched recipe details:', data); 
+      return data;
+  } catch (error) {
+      console.error('Error fetching recipe details:', error);
+      return null;
   }
-
-  async function displayMeals(meals, mealType) {
-    const mealElement = document.getElementById(mealType);
-    mealElement.innerHTML = '';
-
-    for (let meal of meals) {
-        const mealTitle = document.createElement('p');
-        mealTitle.textContent = mealType.charAt(0).toUpperCase() + mealType.slice(1) + ': ' + meal.title;
-        mealTitle.classList.add('text-light');
-        mealElement.appendChild(mealTitle);
-
-        const recipeDetails = await getRecipeDetails(meal.id);
-        if (recipeDetails) {
-            const imageLinkElement = document.createElement('a');
-            imageLinkElement.href = recipeDetails.sourceUrl;
-            imageLinkElement.target = '_blank';
-            mealElement.appendChild(imageLinkElement);
-
-            const imageElement = document.createElement('img');
-            imageElement.src = recipeDetails.image;
-            imageElement.alt = meal.title + ' Image';
-            imageLinkElement.appendChild(imageElement);
-        } else {
-            const imageElement = document.createElement('img');
-            imageElement.src = '';
-            imageElement.alt = 'Placeholder Image';
-            mealElement.appendChild(imageElement);
-        }
-    }
 }
 
+
+document.getElementById('generate-button').addEventListener('click', async()=>{
+  console.log('Button clicked');
+   const  mealPlan = await fetchMealPlan();
+   console.log('Fetched meal plan:', mealPlan);
+  displayMealPlan(mealPlan);
+})
+
+
+async function displayMealPlan(mealPlan) {
+  console.log('Displaying meal plan:', mealPlan);
+
+  const breakfastMeal = mealPlan.meals[0];
+  const lunchMeal = mealPlan.meals[1];
+  const dinnerMeal = mealPlan.meals[2];
+
+  displayMeals([breakfastMeal], 'breakfast');
+  displayMeals([lunchMeal], 'lunch');
+  displayMeals([dinnerMeal], 'dinner');
+}
+
+async function displayMeals(meals, mealType) {
+  const mealElement = document.getElementById(mealType);
+  mealElement.innerHTML = '';
+
+  for (let meal of meals) {
+      const mealTitle = document.createElement('p');
+      mealTitle.textContent = mealType.charAt(0).toUpperCase() + mealType.slice(1) + ': ' + meal.title;
+      mealTitle.classList.add('text-light');
+      mealElement.appendChild(mealTitle);
+
+      const recipeDetails = await getRecipeDetails(meal.id);
+      if (recipeDetails) {
+          const imageLinkElement = document.createElement('a');
+          imageLinkElement.href = recipeDetails.sourceUrl;
+          imageLinkElement.target = '_blank';
+          mealElement.appendChild(imageLinkElement);
+
+          const imageElement = document.createElement('img');
+          imageElement.src = recipeDetails.image;
+          imageElement.alt = meal.title + ' Image';
+          imageLinkElement.appendChild(imageElement);
+      } else {
+          const imageElement = document.createElement('img');
+          imageElement.src = '';
+          imageElement.alt = 'Placeholder Image';
+          mealElement.appendChild(imageElement);
+      }
+  }
+}
 
 const saveMealsUrl = '/api/planner/save-meals';
-
 
 document.getElementById('save-button').addEventListener('click', async () => {
   try {
@@ -109,10 +104,45 @@ document.getElementById('save-button').addEventListener('click', async () => {
   }
 });
 
+// Function to handle form submission
+const retrieveMeals = async (event) => {
 
+  const date = document.getElementById('mealDate').value;
 
+  try {
+    const response = await fetch(`/meals?date=${date}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
 
+    if (!response.ok) {
+      throw new Error('Failed to retrieve meals');
+    }
 
+  
+    const mealsData = await response.json();
 
+   
+    displayRetrievedMeals(mealsData);
+  } catch (error) {
+    console.error('Error retrieving meals:', error);
+  }
+};
 
-     
+const displayRetrievedMeals = (mealsData) => {
+
+  const mealList = document.getElementById('mealList');
+  mealList.innerHTML = ''; 
+
+  mealsData.forEach((meal) => {
+  
+    const listItem = document.createElement('li');
+    listItem.textContent = meal.title;
+    mealList.appendChild(listItem);
+  });
+};
+
+const form = document.getElementById('retrieveMealsForm');
+form.addEventListener('submit', retrieveMeals);

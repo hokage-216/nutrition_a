@@ -6,9 +6,7 @@ class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
-  static associate(models) {
-    User.hasMany(models.Meal, { foreignKey: 'userId' });
-  }
+  
 } 
 
 User.init(
@@ -104,5 +102,5 @@ User.init(
     modelName: 'user',
   }
 );
-User.hasMany(Meal, { foreignKey: 'userId' });
+
 module.exports = User;

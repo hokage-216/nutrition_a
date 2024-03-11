@@ -10,11 +10,6 @@ const User = new UserModel(sequelize, Sequelize);
 const Meal = new  MealModel(sequelize, Sequelize);
 
 
-User.hasMany(Meal, {
-  foreignKey: 'userId', 
-});
-
-
 
 module.exports = {
   User,

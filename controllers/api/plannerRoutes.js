@@ -8,10 +8,13 @@ router.get('/', async (req, res) => {
 
 router.post('/save-meals', async (req, res) => {
   try {
-    const mealPlan = req.body;
-    console.log(mealPlan);
-    
-    const savedMeals = await Meal.bulkCreate(mealPlan);
+    const mealPlan = req.body.meals; 
+
+    const savedMeals = [];
+    for (const mealData of mealPlan) {
+      const savedMeal = await Meal.create(mealData);
+      savedMeals.push(savedMeal);
+    }
 
     res.status(200).json(savedMeals);
   } catch (error) {
@@ -35,6 +38,5 @@ router.get('/meals', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch meals' });
   }
 });
-
 
 module.exports = router;

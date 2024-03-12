@@ -5,13 +5,13 @@
 
       <div class="row d-flex">
         <div class="form-floating mb-3 col">
-          <input class="form-control" type="text" id="fname" />
+          <input class="form-control" type="text" id="fname" required/>
           <label class="form-label" for="fname">First Name:</label>
           <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please enter first name.</div>
         </div>
         <div class="form-floating mb-3 col">
-          <input class="form-control" type="text" id="lname" />
+          <input class="form-control" type="text" id="lname" required/>
           <label class="form-label" for="lname">Last Name:</label>
           <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please enter last name.</div>
@@ -35,7 +35,7 @@
 
       <div class="mb-3 col">
         <label class="form-label" for="sex">Sex:</label>
-        <select class="form-select" aria-label="sex" id="sex">
+        <select class="form-select" aria-label="sex" id="sex" required>
           <option value="" selected disabled>Choose sex</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -45,14 +45,14 @@
       </div>
 
       <div class="form-floating mb-3 col">
-        <input class="form-control" type="text" id="age" />
+        <input class="form-control" type="text" id="age" required/>
         <label class="form-label" for="age">Age:</label>
         <div class="valid-feedback">Looking good!</div>
           <div class="invalid-feedback">Please enter valid age.</div>
       </div>
       
       <div class="form-floating mb-3 col">
-        <input class="form-control" type="text" id="weight" />
+        <input class="form-control" type="text" id="weight" required/>
         <label class="form-label" for="weight">Weight:</label>
         <div class="valid-feedback">Looks good!</div>
         <div class="invalid-feedback">Please enter valid weight in pounds.</div>
@@ -60,14 +60,14 @@
 
       <div class="row">
         <div class="form-floating mb-3 col">
-          <input class="form-control" type="text" id="height-ft" />
+          <input class="form-control" type="text" id="height-ft" required/>
           <label class="form-label" for="height-ft">Height(ft):</label>
           <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please enter valid height in feet.</div>
         </div>
 
         <div class="form-floating mb-3 col">
-          <input class="form-control" type="text" id="height-in" />
+          <input class="form-control" type="text" id="height-in" required/>
           <label class="form-label" for="height-in">Height(in):</label>
           <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please enter valid height in inches.</div>
@@ -75,13 +75,13 @@
       </div>
       <div class="mb-3 col">
         <label class="form-label" for="activity-level">Activity Level:</label>
-        <select class="form-select" aria-label="Activity Level" id="activity-level">
-          <option value="null" selected disabled>Choose activity level</option>
-          <option value="sedentary">Sedentary</option>
-          <option value="light">Lightly Active</option>
-          <option value="moderate">Moderately Active</option>
-          <option value="active">Very Active</option>
-          <option value="extra">Extra Active</option>
+        <select class="form-select" aria-label="Activity Level" id="activity-level" required>
+          <option value="" selected disabled>Choose activity level</option>
+          <option value='0'>Sedentary</option>
+          <option value="1">Lightly Active</option>
+          <option value="2">Moderately Active</option>
+          <option value="3">Very Active</option>
+          <option value="4">Extra Active</option>
         </select>
         <div class="valid-feedback"></div>
         <div class="invalid-feedback">Please select an option.</div>
@@ -95,4 +95,7 @@
 
 <script src="/js/formValidation.js"></script>
 <script src="/js/register.js"></script>
+<script src="/js/calculateCalories.js"></script>
+<script src="/js/calculateMacros.js"></script>
+
 

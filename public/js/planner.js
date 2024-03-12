@@ -1,4 +1,6 @@
 const apiKey = '7d85257ebcaf459aa43aa1e89e85246e';
+let mealPlan;
+
 
 async function fetchMealPlan() {
   console.log('Fetching meal plan');
@@ -32,7 +34,7 @@ async function getRecipeDetails(recipeId) {
 
 document.getElementById('generate-button').addEventListener('click', async()=>{
   console.log('Button clicked');
-   const  mealPlan = await fetchMealPlan();
+   mealPlan = await fetchMealPlan();
    console.log('Fetched meal plan:', mealPlan);
   displayMealPlan(mealPlan);
 })
@@ -80,69 +82,69 @@ async function displayMeals(meals, mealType) {
   }
 }
 
-const saveMealsUrl = '/api/planner/save-meals';
+// const saveMealsUrl = '/api/planner/save-meals';
 
-document.getElementById('save-button').addEventListener('click', async () => {
-  try {
-    const mealPlan = await fetchMealPlan();
+// document.getElementById('save-button').addEventListener('click', async () => {
+//   try {
+//     // const mealPlan = await fetchMealPlan();
 
-    const response = await fetch('/api/planner/save-meals', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(mealPlan),
-    });
+//     const response = await fetch('/api/planner/save-meals', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(mealPlan),
+//     });
 
-    if (response.ok) {
-      console.log('Meals saved successfully');
-    } else {
-      console.error('Failed to save meals');
-    }
-  } catch (error) {
-    console.error('Error saving meals:', error);
-  }
-});
+//     if (response.ok) {
+//       console.log('Meals saved successfully');
+//     } else {
+//       console.error('Failed to save meals');
+//     }
+//   } catch (error) {
+//     console.error('Error saving meals:', error);
+//   }
+// });
 
 // Function to handle form submission
-const retrieveMeals = async (event) => {
+// const retrieveMeals = async (event) => {
 
-  const date = document.getElementById('mealDate').value;
+//   const date = document.getElementById('mealDate').value;
 
-  try {
-    const response = await fetch(`/meals?date=${date}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
+//   try {
+//     const response = await fetch(`/api/meals:${date}`, {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//     });
 
-    if (!response.ok) {
-      throw new Error('Failed to retrieve meals');
-    }
+//     if (!response.ok) {
+//       throw new Error('Failed to retrieve meals');
+//     }
 
   
-    const mealsData = await response.json();
+//     const mealsData = await response.json();
 
    
-    displayRetrievedMeals(mealsData);
-  } catch (error) {
-    console.error('Error retrieving meals:', error);
-  }
-};
+//     displayRetrievedMeals(mealsData);
+//   } catch (error) {
+//     console.error('Error retrieving meals:', error);
+//   }
+// };
 
-const displayRetrievedMeals = (mealsData) => {
+// const displayRetrievedMeals = (mealsData) => {
 
-  const mealList = document.getElementById('mealList');
-  mealList.innerHTML = ''; 
+//   const mealList = document.getElementById('mealList');
+//   mealList.innerHTML = ''; 
 
-  mealsData.forEach((meal) => {
+//   mealsData.forEach((meal) => {
   
-    const listItem = document.createElement('li');
-    listItem.textContent = meal.title;
-    mealList.appendChild(listItem);
-  });
-};
+//     const listItem = document.createElement('li');
+//     listItem.textContent = meal.title;
+//     mealList.appendChild(listItem);
+//   });
+// };
 
-const form = document.getElementById('retrieveMealsForm');
-form.addEventListener('submit', retrieveMeals);
+// const retrieve_meal = document.getElementById('retrieveMealsForm');
+// retrieve_meal.addEventListener('submit', retrieveMeals);

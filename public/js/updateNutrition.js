@@ -8,45 +8,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const activity_level = document.getElementById('activity-level').value;
   const submit = document.getElementById('submit');
 
+  const userData = {
+    email,
+    password,
+    first_name,
+    last_name,
+    sex,
+    height_ft,
+    height_in,
+    weight,
+    age,
+    activity_level,
+    target_calories,
+    target_fat,
+    target_carbs,
+    target_proteins,
+  };
+
   function calculateAndUpdateNutritionGoals() {
     
-    function calculateCalories(age, weight, male, height_ft, height_in, activity_level) {
-      
-      const activityMultipliers = {
-        sedentary: 1.2,
-        lightly_active: 1.375,
-        moderately_active: 1.55,
-        very_active: 1.725,
-        extra_active: 1.9,
-      };
+    // Calculate Calories
+    userData[10] = calculateCalories(userData.age, userData.weight, userData.sex, userData.height_ft, userData.height_in, userData.activity_level);
+    console.log(userData[10]);
 
-      // convert weight from pounds to kilograms
-      const weight_kg = weight * 0.453592;
+    // Calculate Macros
+    userData[11, 12, 13] = calculateMacros(userData[10]);
+    console.log(userData[11, 12, 13]);
 
-      // convert height to cm
-      const height_cm = (height_ft * 30.48) + (height_in * 2.54); 
-
-      let bmr;
-      if (sex === "male") {
-          bmr = 88.362 + (13.397 * weight_kg) + (4.799 * height_cm) - (5.677 * age);
-      } else {
-          bmr = 447.593 + (9.247 * weight_kg) + (3.098 * height_cm) - (4.330 * age);
-      }
-      
-      return bmr * (activityMultipliers[activity_level] || 1.2);
-    }
-
-    function calculateMacros(calories) {
-      const proteinCalories = calories * 0.3;
-      const fatCalories = calories * 0.3;
-      const carbCalories = calories * 0.4;
-
-      const proteinGrams = proteinCalories / 4;
-      const fatGrams = fatCalories / 9;
-      const carbGrams = carbCalories / 4;
-
-      return { proteinGrams, fatGrams, carbGrams };
-    }
+    console.log(userData);
 
     // Age validation
     if (18 < age > 100) {
@@ -61,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Calorie calculation: Calculates average calories burned per day based on activity level
-    const calories = calculateCalories(age, weight, male, height_ft, height_in, activity_level);
+    const calories = calculateCalories(age, weight, sex, height_ft, height_in, activity_level);
     document.getElementById('calories').textContent = calories.toFixed(0);
 
     // Example of calculating macros (simplified)

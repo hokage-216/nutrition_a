@@ -6,6 +6,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const seedDatabase = require('./seeds/seed');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -42,5 +43,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
+  seedDatabase();
   app.listen(PORT, () => console.log(`Now listening  on ${PORT}`));
 });

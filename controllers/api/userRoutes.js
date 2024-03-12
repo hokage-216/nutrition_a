@@ -5,18 +5,15 @@ router.get('/', async (req, res) => {
   res.render('dashboard', {showStats: true});
 });
 
-// create user
+// update user
 
-// update user stats
-router.put('/updateNutrition', async (req, res) => {
-  const userId = req.session.userId;
-  const { age, weight, } = req.body;
+// create user
+router.post('/signup', async (req, res) => {
+  const { email, password, first_name, last_name, sex, height_ft, height_in, weight, age, activity_level} = req.body;
   try {
     // update user in the database
-    await User.update({ age, weight /* other fields */ }, {
-      where: { id: userId }
-    });
-    res.redirect('/successPage'); // redirect or send a success response
+    await User.create({email, password, first_name, last_name, sex, height_ft, height_in, weight, age, activity_level});
+    res.redirect('signup_success'); // redirect or send a success response
   } catch (error) {
     console.error('Error updating user:', error);
     res.status(500).send('Error updating user information');

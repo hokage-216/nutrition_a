@@ -10,13 +10,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/api/finder">
-              Recipe Finder
+            <a class="nav-link" href="/api/search">
+              Search Recipies
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/api/user">
-              User Stats
+            <a class="nav-link" href="/api/users">
+              User Info
             </a>
           </li>
           <li class="nav-item">
@@ -37,13 +37,13 @@
       <!-- Your dynamic content here -->
       <div>
         {{#if showPlanner}}
-          {{> planner}}
+          {{> generate_mealplan}}
         {{/if}}
         {{#if showStats}}
           {{> stats}}
         {{/if}}
-        {{#if showFinder}}
-          {{> finder}}
+        {{#if showSearch}}
+          {{> searchrecipe}}
         {{/if}}
       </div>
     </main>

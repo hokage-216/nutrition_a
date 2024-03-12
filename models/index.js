@@ -1,17 +1,6 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../config/connection');
+const User = require('./User');
+const Recipe = require('./Recipe');
 
+//Relationships
 
-const UserModel = require('./User');
-const MealModel = require('./Meal');
-
-
-const User = new UserModel(sequelize, Sequelize);
-const Meal = new  MealModel(sequelize, Sequelize);
-
-
-
-module.exports = {
-  User,
-  Meal,
-};
+module.exports = { User, Recipe };

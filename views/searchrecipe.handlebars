@@ -2,7 +2,7 @@
 
 <section>
     <h2>Search for Recipes</h2>
-    <form action="/recipes/search/:query" method="GET">
+    <form action="/api/search/" method="GET">
         <label for="query">Enter ingredients or keywords:</label>
         <input type="text" id="query" name="query" required>
         <button type="submit">Search</button>
@@ -10,3 +10,9 @@
         
     </form>
 </section>
+
+{{#if searchRan}}
+
+    {{>searchedRecipes}}
+
+{{}}

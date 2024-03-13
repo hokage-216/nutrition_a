@@ -60,7 +60,7 @@ const submitFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      // document.location.replace('/');
+      document.location.replace('/');
     } 
   } catch (error) {
     alert('Failed to log in', error);

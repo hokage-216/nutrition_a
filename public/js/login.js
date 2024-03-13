@@ -7,18 +7,22 @@ const loginFormHandler = async (event) => {
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
 
-    if (email && password) {
-      // Send the e-mail and password to the server
-      const response = await fetch('/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+      if (email && password) {
+        // Send a POST request to the API endpoint
+        const response = await fetch('/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
 
-      console.log(response);
-    }
-    
-    document.location.replace('/');
+        if (response.ok) {
+          // If successful, redirect the browser to the profile page
+          document.location.replace('/');
+        } else {
+          alert(response.statusText);
+        }
+      }
+
   } catch (error) {
     alert('Failed to log in', error);
   }

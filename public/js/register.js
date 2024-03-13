@@ -53,6 +53,7 @@ const submitFormHandler = async (event) => {
           'Content-Type': 'application/json', // Specify the content type
       },
       body: JSON.stringify(newUser), // Convert the JavaScript object to a JSON string
+
     });
 
     console.log(response);

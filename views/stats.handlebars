@@ -1,14 +1,16 @@
 <form id="nutritionForm">
   <input type="number" id="age" name="age" placeholder="Age" required>
   <input type="number" id="weight" name="weight" placeholder="Weight (pounds)" required>
+  <input type="number" id="height_ft" name="height_ft" placeholder="Height(ft)" required>
+  <input type="number" id="height_in" name="height_in" placeholder="Height(in)" required>
   
   <!-- need to add other fields -->
   <button type="submit">Update</button>
 </form>
 
 <div id="calorieOutput">Caloric Needs: <span id="calories">0</span> calories</div>
-<div id="calorieOutput">Caloric Needs: <span id="calories">0</span> calories</div>
-<div id="calorieOutput">Caloric Needs: <span id="calories">0</span> calories</div>
-<div id="calorieOutput">Caloric Needs: <span id="calories">0</span> calories</div>
+<div id="calorieOutput">Caloric Needs: <span id="fat">0</span> fat</div>
+<div id="calorieOutput">Caloric Needs: <span id="carbs">0</span> carbs</div>
+<div id="calorieOutput">Caloric Needs: <span id="proteins">0</span> proteins</div>
 
-<script src="../public/js/realTimeNutrition.js"></script>
+<script src="/js/updateNutrition.js"></script>

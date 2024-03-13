@@ -46,7 +46,7 @@ document.querySelector('#submit').addEventListener('click', async (event) => {
   console.log(userData);
 
   try {
-    const response = await fetch('/api/users/signup', {
+    const response = await fetch('/api/users/createUser', {
         method: 'POST', // Specify the method
         headers: {
             'Content-Type': 'application/json', // Specify the content type

@@ -80,7 +80,7 @@ User.init(
     target_proteins: {
       type: DataTypes.FLOAT,
       allowNull: true
-    }
+    },
   },
   {
     hooks: {

@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   res.render('dashboard', {showStats: true});
 });
 
@@ -28,6 +29,10 @@ router.delete(':id', async (req, res) => {
       where: { id }
     });
     res.send('User deleted successfully');
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+    res.redirect('login');
   } catch (error) {
     console.error('Error deleting user:', error);
     res.status(500).send('Error deleting user');
@@ -35,13 +40,16 @@ router.delete(':id', async (req, res) => {
 });
 
 // create user
-router.post('/signup', async (req, res) => {
+router.post('/createUser', async (req, res) => {
   const { email, password, first_name, last_name, sex, height_ft, height_in, weight, age, activity_level} = req.body;
   try {
     // update user in the database
-    await User.create({email, password, first_name, last_name, sex, height_ft, height_in, weight, age, activity_level});
-    res.render('signup_success'); // redirect or send a success response
-    console.log('User Updated Successfully');
+    const userData = await User.create({email, password, first_name, last_name, sex, height_ft, height_in, weight, age, activity_level});
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+    });
+    res.redirect('/');
   } catch (error) {
     res.status(500).json({ error: 'Error creating user information' });
   }

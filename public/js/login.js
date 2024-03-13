@@ -22,6 +22,7 @@ const loginFormHandler = async (event) => {
           alert(response.statusText);
         }
       }
+
   } catch (error) {
     alert('Failed to log in', error);
   }

@@ -72,15 +72,15 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   if (req.session.logged_in) {
-    // Remove the session variables
     req.session.destroy(() => {
-      res.status(204).end();
+      res.redirect('/login');
     });
   } else {
-    res.status(404).end();
+    res.status(404).send('Not logged in');
   }
 });
+
 
 module.exports = router;

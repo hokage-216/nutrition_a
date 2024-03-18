@@ -89,7 +89,7 @@ document.getElementById('save-button').addEventListener('click', async () => {
   try {
     
 
-    const response = await fetch('/api/planner/save-meals', {
+    const response = await fetch(saveMealsUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

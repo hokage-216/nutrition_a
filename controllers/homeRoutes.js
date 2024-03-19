@@ -4,12 +4,20 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    res.render('register');
+    if(req.session.logged_in){
+    res.render('dashboard');}
+    else  res.render('login');
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+router.get('/register', (req, res) =>{
+  try{
+    res.render('register')
+  }catch  (err){
+  res.status(500).json(err)}
+});
 
 router.get('/dashboard', async (req, res) => {
   try {
@@ -56,7 +64,8 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.status(200),json({ user: userData, message: 'You are now logged in!' });
+      res.status(200).json({ user: userData, message: 'You are now logged in!' });
+      res.render('/dashboard')
     });
 
 
@@ -65,15 +74,15 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   if (req.session.logged_in) {
-    // Remove the session variables
     req.session.destroy(() => {
-      res.status(204).end();
+      res.redirect('/login');
     });
   } else {
-    res.status(404).end();
+    res.status(404).send('Not logged in');
   }
 });
+
 
 module.exports = router;

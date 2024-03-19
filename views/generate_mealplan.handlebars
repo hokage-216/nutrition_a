@@ -17,22 +17,22 @@
 
     <div class="mt-4">
         <button id="generate-button" class="btn btn-primary me-3">Generate Meal Plan</button>
-        {{!-- <button id="save-button" class="btn btn-success">Save</button> --}}
+       <button id="save-button" class="btn btn-success">Save</button> 
     </div>
-     {{!-- <form action="/meals" method="GET" class="mt-4">
+     <form action="/meals" method="GET" class="mt-4">
         <div class="form-group row justify-content-center">
             <label for="mealDate" class="col-sm-2 col-form-label text-light">Select Date:</label>
             <div class="col-sm-4">
                 <input type="date" id="mealDate" name="date" class="form-control">
             </div>
             <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary" id="retreiveMealsForm">Retrieve Saved Meals</button>
+                <button type="submit" class="btn btn-primary" id="retrieveMealsForm">Retrieve Saved Meals</button>
             </div>
         </div>
-    </form> --}}
+    </form> 
 
     <!-- Display the list of meals if available -->
-    {{!-- {{#if mealsData}}
+    {{#if mealsData}} 
     <ul id="mealList" class="list-group mt-4">
         {{#each mealsData}}
         <li class="list-group-item">{{this.title}}</li>
@@ -40,7 +40,7 @@
     </ul>
     {{else}}
     <p class="text-light mt-4">No meals available for the selected date.</p>
-    {{/if}} --}}
+    {{/if}}
 </div>
 
 
